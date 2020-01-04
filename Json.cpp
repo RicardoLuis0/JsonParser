@@ -89,8 +89,17 @@ static std::shared_ptr<Json::JsonArray> getArray(const std::string &data,size_t 
     if(skip_whitespace(data,i),data[i]!='['){
         return nullptr;
     }
+    std::vector<std::shared_ptr<Json::JsonElement>> arr;
     i++;
-    return nullptr;
+    while(skip_whitespace(data,i),data[i]!=']'){
+        arr.push_back(getElement(data,i));
+        if(skip_whitespace(data,i),data[i]!=','){
+            if(data[i]==']')break;
+            throw Json::JsonParseError("Expected ',' got '"+std::string(1,data[i])+"'");
+        }
+        i++;
+    }
+    return std::make_shared<Json::JsonArray>(arr);
 }
 
 static inline unsigned int ipow(unsigned int base,unsigned int exp){
