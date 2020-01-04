@@ -1,2 +1,2 @@
 # JsonParser
- Simple Json parser for c++, supports '#' comments and trailing commas
+ Simple Json parser for C++, supports '#' comments and trailing commas
