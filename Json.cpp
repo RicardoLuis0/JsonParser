@@ -99,6 +99,7 @@ static std::shared_ptr<Json::JsonArray> getArray(const std::string &data,size_t 
         }
         i++;
     }
+    i++;
     return std::make_shared<Json::JsonArray>(arr);
 }
 
